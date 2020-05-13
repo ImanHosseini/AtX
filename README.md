@@ -20,4 +20,4 @@ I was trying to answer how hard it would be to translate an _ARM32_ elf binary t
 | LR | R15 |
 | SP | RSP |
 
-This way, function calls _can_ become seamless, i.e. first arg is passed on R0 in ARM32, becomes DI in X86_64. 
+This way, function calls _can_ become seamless, i.e. first arg is passed on R0 in ARM32, becomes DI in X86_64. Also for the stack, let's just mimic the same stack: anything pushed in ARM, push it in x86. Issues arise regarding how to handle data section and pc-relative addressings: in ARM, the mechanism is via the link-register and you can just pop stuff from stack to lr, in x86 this is not the case with _RIP_ and instead _CALL_ and _RET_ are used (rather than _BL_ and _mov PC, LR_).
