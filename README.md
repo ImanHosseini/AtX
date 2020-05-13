@@ -1,6 +1,8 @@
 ![atx logo](https://github.com/ImanHosseini/AtX/raw/master/atx_c.png "AtX")
 # Translating ARM to X86
-I was trying to answer how hard it would be to translate an _ARM32_ elf binary to a _X86\_64_ elf binary. First, based on the function calling conventions for the ABIs, I decided on a mapping of registers: 
+I am trying to answer how hard it would be to translate an _ARM32_ elf binary to a _X86\_64_ elf binary. This is meant as a course project to _The Art of Embedded Exploitation_ course \[Spring 2020\] taught by Stephen A. Ridley at NYU. The idea was to be able to do this for simple _ARM32_ binaries, and I started by trying to port one of the simple stack smashing binaries by hand, and then trying to make it 'automated'. I had previous experience with ARM architecture, from my undergrad thesis [JAA](https://github.com/ImanHosseini/JAA) which was something similar, but for translating JVM bytecode to ARM. The tools I picked for doing this are [Capstone Engine](http://www.capstone-engine.org/) for disassembly, [LIEF](https://lief.quarkslab.com/) to fiddle with elf headers and decided on [NASM- Netwide Assembler](https://nasm.us/) for output: so that my _translator_ generates assembly that then _NASM_ would assemble into an X86_64 binary.
+
+Based on the function calling conventions for the ABIs, I decided on a mapping of registers: 
 
 | ARM32         | X86_64        |
 | ------------- |:-------------:|
